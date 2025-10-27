@@ -51,10 +51,10 @@ def carregar_dados(caminho_arquivo=None, usar_kagglehub=True):
     if caminho_arquivo is not None:
         # Usar arquivo fornecido
         df = pd.read_csv(caminho_arquivo)
-        print(f"✓ Arquivo local carregado: {caminho_arquivo}")
+        print(f"Arquivo local carregado: {caminho_arquivo}")
     elif usar_kagglehub:
         try:
-            print("🔄 Baixando dataset do Kaggle via kagglehub...")
+            print("Baixando dataset do Kaggle via kagglehub...")
             from kagglehub import KaggleDatasetAdapter
             
             # Carregar diretamente como DataFrame pandas
@@ -66,8 +66,7 @@ def carregar_dados(caminho_arquivo=None, usar_kagglehub=True):
             print(f"✓ Dataset carregado do Kaggle")
             
         except Exception as e:
-            print(f"⚠️ Erro ao baixar do Kaggle: {e}")
-            print("💡 Use: python script.py <caminho_do_arquivo.csv>")
+            print(f" Erro ao baixar do Kaggle: {e}")
             raise FileNotFoundError("Dataset não encontrado. Forneça o caminho do arquivo CSV.")
     else:
         raise ValueError("Forneça um caminho de arquivo ou use usar_kagglehub=True")
@@ -77,7 +76,7 @@ def carregar_dados(caminho_arquivo=None, usar_kagglehub=True):
 
 def preparar_dados(df):
     """Prepara e limpa os dados, adicionando feature engineering"""
-    print("\n🔧 Preparando dados com feature engineering...")
+    print("\n Preparando dados com feature engineering...")
     
     df = df.copy()
     
@@ -97,7 +96,7 @@ def preparar_dados(df):
     df = df.dropna(subset=[col_salario])
     
     # ===== FEATURE ENGINEERING =====
-    print("\n🎯 Criando features engineered...")
+    print("\n Criando features engineered...")
     
     # 1. Mapear nível de experiência para ordem numérica
     exp_map = {'EN': 1, 'MI': 2, 'SE': 3, 'EX': 4}
@@ -232,7 +231,7 @@ def investigar_trabalho_remoto(df):
 def preparar_features_para_modelo_corrigido(df):
     """Prepara features SEM data leakage"""
     print("\n" + "="*60)
-    print("🤖 PREPARAÇÃO PARA MODELAGEM (CORRIGIDA)")
+    print("PREPARAÇÃO PARA MODELAGEM (CORRIGIDA)")
     print("="*60)
     
     df_modelo = df.copy()
@@ -252,8 +251,8 @@ def preparar_features_para_modelo_corrigido(df):
                            'employee_residence', 'company_location', 'company_size']
     features_categoricas = [f for f in features_categoricas if f in df_modelo.columns]
     
-    print(f"\n✓ Features numéricas (sem leakage): {features_numericas_seguras}")
-    print(f"✓ Features categóricas: {features_categoricas[:3]}... ({len(features_categoricas)} total)")
+    print(f"\n Features numéricas (sem leakage): {features_numericas_seguras}")
+    print(f" Features categóricas: {features_categoricas[:3]}... ({len(features_categoricas)} total)")
     
     # Encoding de variáveis categóricas
     le_dict = {}
@@ -322,7 +321,7 @@ def treinar_modelos_com_validacao_temporal(X, y, df_modelo):
     
     print("\nTreinando modelos...")
     for nome, modelo in modelos.items():
-        print(f"\n  → {nome}...")
+        print(f"\n  {nome}...")
         
         if nome == 'Linear Regression':
             modelo.fit(X_train_scaled, y_train)
@@ -343,9 +342,9 @@ def treinar_modelos_com_validacao_temporal(X, y, df_modelo):
             'r2': r2
         }
         
-        print(f"    ✓ MAE: ${mae:,.2f}")
-        print(f"    ✓ RMSE: ${rmse:,.2f}")
-        print(f"    ✓ R²: {r2:.4f}")
+        print(f"    MAE: ${mae:,.2f}")
+        print(f"    RMSE: ${rmse:,.2f}")
+        print(f"    R²: {r2:.4f}")
     
     # Visualização
     fig, axes = plt.subplots(2, 2, figsize=(16, 12))
@@ -419,7 +418,7 @@ def treinar_modelos_com_validacao_temporal(X, y, df_modelo):
 def clustering_otimizado(df, X):
     """Clustering testando múltiplos valores de K"""
     print("\n" + "="*60)
-    print("CLUSTERING OTIMIZADO (2-4 CLUSTERS)")
+    print("CLUSTERING OTIMIZADO (2-8 CLUSTERS)")
     print("="*60)
     
     scaler = StandardScaler()
@@ -430,7 +429,7 @@ def clustering_otimizado(df, X):
     inertias = []
     silhouette_scores = []
     
-    print("\n🔄 Testando diferentes números de clusters...")
+    print("\n Testando diferentes números de clusters...")
     for k in K_range:
         kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
         kmeans.fit(X_scaled)
@@ -458,7 +457,7 @@ def clustering_otimizado(df, X):
     plt.tight_layout()
     output_path = os.path.join(OUTPUT_DIR, 'clustering_otimizacao.png')
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f"\n✓ Gráfico salvo: {output_path}")
+    print(f"\n Gráfico salvo: {output_path}")
     
     # Testar especificamente K=2, 3, 4
     col_salario = 'salary_in_usd' if 'salary_in_usd' in df.columns else 'salary'
@@ -534,7 +533,7 @@ def clustering_otimizado(df, X):
 def main():
     """Executa todas as análises melhoradas"""
     print("\n" + "="*80)
-    print("🚀 ANÁLISE MELHORADA DE SALÁRIOS EM DATA SCIENCE")
+    print("ANÁLISE MELHORADA DE SALÁRIOS EM DATA SCIENCE")
     print("="*80)
     
     # 1. Carregar e preparar dados
@@ -553,8 +552,6 @@ def main():
     
     # 5. Resumo final
     print("\n" + "="*80)
-    print("ANÁLISE MELHORADA CONCLUÍDA!")
-    print("="*80)
     print("\nMelhorias implementadas:")
     print("  ✓ Data leakage corrigido (salary removido)")
     print("  ✓ Feature engineering aplicado (7 novas features)")
@@ -576,9 +573,7 @@ def main():
     
     # Comparação de R² antes e depois
     print("\nCOMPARAÇÃO DE PERFORMANCE:")
-    print("  Antes (com data leakage): R² = 0.99")
     print(f"  Depois (corrigido): R² = {max([r['r2'] for r in resultados.values()]):.4f}")
-    print("  ✓ Agora o modelo reflete a realidade!")
     
     return df_final, resultados, kmeans
 
