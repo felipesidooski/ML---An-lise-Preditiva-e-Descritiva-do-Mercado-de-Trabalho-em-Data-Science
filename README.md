@@ -1,4 +1,4 @@
-# ML---An-lise-Preditiva-e-Descritiva-do-Mercado-de-Trabalho-em-Data-Science
+# ML-Analise Preditiva e Descritiva-do Mercado de Trabalho em-Data-Science
 ML - Análise Preditiva e Descritiva do Mercado de Trabalho em Data Science: Uma Abordagem Baseada em KDD (2020-2025) baseada em dados do Kaggle
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
