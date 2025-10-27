@@ -6,7 +6,7 @@ ML - Análise Preditiva e Descritiva do Mercado de Trabalho em Data Science: Uma
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Kaggle](https://img.shields.io/badge/Kaggle-Dataset-20BEFF.svg)](https://www.kaggle.com/datasets/saurabhbadole/latest-data-science-job-salaries-2024)
 
-## 🎯 Visão Geral
+## Visão Geral
 
 Análise abrangente e preditiva do mercado de trabalho em Data Science, investigando tendências salariais, padrões de contratação e perfis profissionais através de técnicas avançadas de Machine Learning e Análise de Dados.
 
@@ -16,9 +16,9 @@ Este projeto surgiu da necessidade de entender:
 - **Perfis profissionais distintos** no mercado
 - **Tendências de trabalho remoto** e sua relação com salários
 
-## ✨ Features Principais
+##  Features Principais
 
-### 🔍 Análises Implementadas
+###  Análises Implementadas
 
 - **Modelagem Preditiva Robusta**
   - Correção de data leakage
@@ -42,7 +42,7 @@ Este projeto surgiu da necessidade de entender:
   - Indicadores de senioridade
   - Features de localização relativa
 
-## 📁 Dataset
+##  Dataset
 
 **Fonte:** [Kaggle - Latest Data Science Job Salaries 2024](https://www.kaggle.com/datasets/saurabhbadole/latest-data-science-job-salaries-2024)
 
@@ -60,14 +60,12 @@ Este projeto surgiu da necessidade de entender:
 - `company_location`: Localização da empresa
 - `company_size`: Tamanho da empresa (S, M, L)
 
-## 🗂️ Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 data-science-salary-analysis/
 │
 ├── new_analise_salarios_datascience.py  # Script principal com todas as análises
-├── example.py                           # Versão inicial (com data leakage)
-├── analise_consolidada_datascience.py   # Análise consolidada
 │
 ├── outputs/                             # Gráficos e resultados gerados
 │   ├── investigacao_remoto.png          # Figura 1: Análise trabalho remoto
@@ -81,7 +79,7 @@ data-science-salary-analysis/
 └── README.md                            # Este arquivo
 ```
 
-## 🚀 Instalação e Uso
+##  Instalação e Uso
 
 ### Pré-requisitos
 
@@ -129,24 +127,24 @@ resultados, scaler, y_test = treinar_modelos_com_validacao_temporal(X, y, df_mod
 df_final, kmeans, k_otimo = clustering_otimizado(df, X)
 ```
 
-## 📊 Principais Descobertas
+## Principais Descobertas
 
-### 💰 Evolução Salarial
+### Evolução Salarial
 - **Crescimento de 57%** no salário médio pós-pandemia ($100k → $157k)
 - **Cargos Top:** ML Engineer e Research Scientist (~$197k)
 - **Impacto da senioridade:** Senior ganha 2.5x mais que Entry-level
 
-### 🏢 Trabalho Remoto
+### Trabalho Remoto
 - **100% remoto:** Salários competitivos ($149k)
 - **0% remoto:** Premium de $11k sobre trabalho remoto
-- **⚠️ Anomalia identificada:** 50% remoto apresenta salários significativamente menores ($81k)
+- ** Anomalia identificada:** 50% remoto apresenta salários significativamente menores ($81k)
   - Investigação revelou possível segmentação de mercado ou erros nos dados
 
-### 📈 Tendências de Contratação
+### Tendências de Contratação
 - **Explosão em 2024:** 62,000 contratações (vs 75 em 2020)
 - **Crescimento anual médio:** 400%+ nos últimos 5 anos
 
-### 👥 Perfis Profissionais Identificados (K=2)
+### Perfis Profissionais Identificados (K=2)
 
 **Cluster 0 - Analistas e Iniciantes** (65% dos profissionais)
 - Salário médio: $105k
@@ -158,7 +156,7 @@ df_final, kmeans, k_otimo = clustering_otimizado(df, X)
 - Predominância: Data Scientist, ML Engineer
 - Características: Senior/Expert, grandes empresas
 
-## 📈 Visualizações Principais
+## Visualizações Principais
 
 ### Figura 1: Investigação de Trabalho Remoto
 ![Investigação Remoto](outputs/investigacao_remoto.png)
@@ -172,7 +170,7 @@ df_final, kmeans, k_otimo = clustering_otimizado(df, X)
 ![Feature Importance](outputs/feature_importance_corrigida.png)
 *Importância relativa das variáveis para predição salarial*
 
-## 🤖 Resultados dos Modelos
+## Resultados dos Modelos
 
 ### Performance Preditiva (Validação Temporal)
 
@@ -193,7 +191,7 @@ df_final, kmeans, k_otimo = clustering_otimizado(df, X)
 - **Teste:** 2025 (10% dos dados)
 - Simulação de cenário real de predição
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Core
 - **Python 3.8+**
@@ -214,9 +212,9 @@ df_final, kmeans, k_otimo = clustering_otimizado(df, X)
 ### Data Source
 - **KaggleHub** - Download automático do dataset
 
-## 🔧 Melhorias Implementadas
+## Melhorias Implementadas
 
-### ✅ Correções Técnicas
+### Correções Técnicas
 1. **Data Leakage Eliminado**
    - Antes: R² = 0.99 (irreal - incluía `salary` nas features)
    - Depois: R² = 0.28 (realista - apenas features independentes)
